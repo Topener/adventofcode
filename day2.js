@@ -20,9 +20,9 @@ function isValidPart1(item) {
 
     if (matches && matches.length >= parts[0][0] && matches.length <= parts[0][1]) {
         return true;
-    } else {
-        return false;
     }
+    return false;
+   
 }
 
 
