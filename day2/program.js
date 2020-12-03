@@ -61,7 +61,7 @@ function parseItems(input) {
 }
 
 
-fs.readFile('./day2input.txt', 'utf-8', (e, data) =>{
+fs.readFile('./input.txt', 'utf-8', (e, data) =>{
     const items = data.split("\n");
 
     const pws = parseItems(items);

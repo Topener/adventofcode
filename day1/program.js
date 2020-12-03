@@ -24,7 +24,7 @@ function findSumPart1(nums) {
     });
 }
 
-fs.readFile('./day1input.txt', 'utf-8', (e, data) =>{
+fs.readFile('./input.txt', 'utf-8', (e, data) =>{
     const items = data.split("\n");
     items.forEach((num, i) => {
         items[i] = parseInt(num);
