@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 fs.readFile('./input.txt', 'utf-8', (e, data) => {
+    const start = Date.now();
     const items = data.split("\n");
     const rawPassports = findPassports(items);
     const passportsCheck1 = splitPassportData(rawPassports);
@@ -24,7 +25,7 @@ fs.readFile('./input.txt', 'utf-8', (e, data) => {
     });
 
     console.log(`Part2: Found ${validPassports} valid passports`);
-
+    console.log(Date.now() - start);
 });
 
 function findPassports(data) {
