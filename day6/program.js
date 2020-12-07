@@ -1,6 +1,4 @@
-const { group } = require('console');
 const fs = require('fs');
-
 fs.readFile('./input.txt', 'utf-8', (e, data) => {
     const answers = data.split("\n");
     const groups = findYesses(answers);
