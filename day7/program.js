@@ -12,7 +12,9 @@ for (color in allBags) {
     }
 };
 
-console.log('got matches', matches);
+console.log('bags that eventually contain a shiny gold bag', matches);
+
+
 
 function extractRules(rules) {
     let bagtypes = {};
