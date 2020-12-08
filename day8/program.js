@@ -3,11 +3,12 @@ const fs = require('fs');
 
 const data  = fs.readFileSync('./input.txt', 'utf-8');
 const readData = data.split("\n");
-execute(readData, true);
+
+let onlyChangeTheseLines = execute(readData, true);
 
 readData.forEach((l, i) => {
     const copy = JSON.parse(JSON.stringify(readData));
-
+    if (onlyChangeTheseLines.indexOf(i) === -1) return;
     if (l.indexOf('nop') > -1) {
         copy[i] = l.replace('nop','jmp');
     } else if (l.indexOf('jmp') > -1) {
@@ -22,13 +23,13 @@ function execute(instructions, outputDeadEnd) {
     const lines = [];
     let acc = 0;
     let line = 0;
-    let executedLines = []; 
+    let executedLines = [];
 
     instructions.forEach(i => {
         lines.push(splitInstruction(i));
     });
 
-    run();
+    return run();
 
     function splitInstruction(instruction) {
         const parts = instruction.split(' ');
@@ -42,7 +43,7 @@ function execute(instructions, outputDeadEnd) {
             if (outputDeadEnd) {
                 console.log('Part 1', acc);
             }
-            return;
+            return executedLines;
         }
 
         const instrcution = lines[line];
