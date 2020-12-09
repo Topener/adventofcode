@@ -1,4 +1,3 @@
-const { exec } = require('child_process');
 const fs = require('fs');
 
 const data  = fs.readFileSync('./input.txt', 'utf-8');
