@@ -36,7 +36,6 @@ function hasSum(num, nums) {
 }
 
 function findSum(nums, sumToFind) {
-    let sum = 0;
     let uses = [];
     let found = false;
 
