@@ -1,0 +1,20 @@
+{
+    "name": "adventofcode",
+    "version": "1.0.0",
+    "description": "Hi all!",
+    "main": "helper.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Topener/adventofcode.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Topener/adventofcode/issues"
+    },
+    "homepage": "https://github.com/Topener/adventofcode#readme",
+    "type": "module"
+}
