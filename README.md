@@ -6,8 +6,7 @@ My AdventOfCode is `node.js` based.
 
 To run any day, type `node index.js <day#>` and it will execute the day you inputted. Make sure you fill the relevant `input.txt` file with the input for that day if you want to see your own code.
 
-The current main branch is 2021, but my code from last year is also available in branch 2020. I didn't get further than day 10 yet though. 
-
+The current main branch is 2022, but my code from last years is also available in branch 2020, though both years are limited in number of days.
 
 For 2020: Step into each day folder and run `node program.js` to run it. 
 
