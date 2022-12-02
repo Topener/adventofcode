@@ -1,7 +1,8 @@
 import fs from "fs";
 
 export default async function loadData(day) {
-    const data = await fs.readFileSync(`./${day}/input.txt`, "utf-8");
+    const filename = process.argv[3] ? 'sample.txt' : 'input.txt';
+    const data = await fs.readFileSync(`./${day}/${filename}`, "utf-8");
     return data.split("\n");
 }
 
