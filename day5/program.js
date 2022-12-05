@@ -1,6 +1,6 @@
 export default function Day(data) {
-    console.log(data);
-    extractStacks(data);
+    const {stacks, instructions} = extractStacks(data);
+    console.log(stacks);
 }
 
 function extractStacks(data) {
@@ -12,15 +12,21 @@ function extractStacks(data) {
     }
 
     const containerRows = [];
-
-    let i = 0;
-    while (i < data.length) {
+    const instructions = [];
+    let status = 'containers';
+    for (let i = 0; i < data.length; i++) {
         if (data[i][1] === '1') {
-            break;
+            status = 'split';
         }
-        containerRows.push(data[i]);    
-        i++;
-    }
+        if (data[i][0] === 'm') {
+            status = 'instructions'
+        }
+        if (status === 'containers') {
+            containerRows.push(data[i]);
+        } else if (status === 'instructions') {
+            instructions.push(data[i]);
+        }
+    };
 
     containerRows.forEach(row => {
         const parts = row.split(' ');
@@ -32,4 +38,5 @@ function extractStacks(data) {
             stacks[stackNum].unshift(part);
         });
     });
+    return {stacks, instructions};
 }
