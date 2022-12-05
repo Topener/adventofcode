@@ -1,6 +1,29 @@
 export default function Day(data) {
     const {stacks, instructions} = extractStacks(data);
-    console.log(stacks);
+    executeInstructions(stacks, instructions);
+    topOfStacks(stacks);
+}
+
+function topOfStacks(stacks) {
+    let solutionString = '';
+    stacks.forEach(stack => {
+        solutionString += stack[stack.length-1].substr(1,1);
+    });
+
+    console.log(solutionString);
+}
+
+function executeInstructions(stacks, instructions) {
+    instructions.forEach(row => {
+        const instruction = row.split(' ');
+        const amount = parseInt(instruction[1]);
+        const fromStack = parseInt(instruction[3]) - 1;
+        const toStack = parseInt(instruction[5]) - 1;
+
+        for (let i = 0; i < amount; i++) {
+            stacks[toStack].push(stacks[fromStack].pop());
+        }
+    });
 }
 
 function extractStacks(data) {
