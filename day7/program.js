@@ -1,6 +1,5 @@
 export default function Day(data) {
-    
-    const {files, dirs} = loopThroughCommands(data);
+    const { files, dirs } = loopThroughCommands(data);
     dirs.sort((a, b) => a.size - b.size);
     const sum = dirs.reduce((acc, dir) => {
         if (dir.size < 100000) {
@@ -10,6 +9,14 @@ export default function Day(data) {
     }, 0);
 
     console.log(`Part 1: ${sum}`);
+
+    const totalFileSize = files.size;
+
+    const sizeRemaining = 70000000 - totalFileSize;
+    const sizeRequiredForUpgrade = 30000000 - sizeRemaining;
+
+    const smallestDir = dirs.find(dir => dir.size >= sizeRequiredForUpgrade);
+    console.log(`Part 2: ${smallestDir.size}`);
 }
 
 function loopThroughCommands(commands, from = 0, name = "/") {
@@ -27,9 +34,9 @@ function loopThroughCommands(commands, from = 0, name = "/") {
         if (command[0] === "$") {
             if (command[1] === "cd") {
                 if (command[2] === "..") {
-                    return {files: dirStructure, newI: i, dirs: directories};
+                    return { files: dirStructure, newI: i, dirs: directories };
                 } else if (command[2] !== "/") {
-                    let {files, newI, dirs} = loopThroughCommands(commands, i + 1, command[2]);
+                    let { files, newI, dirs } = loopThroughCommands(commands, i + 1, command[2]);
                     directories.push(files);
                     directories.push(...dirs);
                     i = newI;
@@ -39,15 +46,13 @@ function loopThroughCommands(commands, from = 0, name = "/") {
                     }
                 }
             }
-        }
-        else if (!isNaN(command[0])) {
+        } else if (!isNaN(command[0])) {
             dirStructure.size += parseInt(command[0]);
             dirStructure.files.push({
                 name: command[1],
                 size: parseInt(command[0]),
             });
         }
-
     }
-    return {files: dirStructure, newI: i, dirs: directories};
+    return { files: dirStructure, newI: i, dirs: directories };
 }
