@@ -1,6 +1,21 @@
 export default function Day(data) {
     let treeMap = convertTreesToMap(data);
+    initiatePart1(treeMap);
+        
+    // part 2
+    let scores = [];
+    treeMap.forEach((row, i) => {
+        row.forEach((tree, j) => {
+            scores.push(calculateViewScore(treeMap, j, i));
+        });
+    });
+    
+    scores.sort((a, b) => b - a);
+    
+    console.log(`Part 2: ${scores[0]}`);
+}
 
+function initiatePart1(treeMap) {
     treeMap.forEach(row => {
         traverseRow(traverseRow(row), true);
     });
@@ -21,17 +36,6 @@ export default function Day(data) {
     });
 
     console.log(`Part 1: ${visibleTrees}`);
-    
-    let scores = [];
-    treeMap.forEach((row, i) => {
-        row.forEach((tree, j) => {
-            scores.push(calculateViewScore(treeMap, j, i));
-        });
-    });
-    
-    scores.sort((a, b) => b - a);
-    
-    console.log(`Part 2: ${scores[0]}`);
 }
 
 // function to rotate the grid of the map
