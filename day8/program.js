@@ -104,7 +104,7 @@ function calculateVisibleInRow(row, from, direction = 'left') {
     let score = 0;
     
     if (direction === 'left') {
-        row = row.reverse();
+        row = [...row].reverse();
         from = row.length - from - 1;
     }
     
