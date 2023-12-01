@@ -14,3 +14,5 @@ const { part1, part2 } = await import(`./${dayFile}/index.js`);
 const data = await loadData({ day: dayFile, dataType });
 
 partRunner({ part: part1, input: data });
+
+partRunner({ part: part2, input: data });
