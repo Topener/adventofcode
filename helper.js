@@ -20,9 +20,9 @@ export async function argsChecker(args) {
         process.exit(1);
     }
 
-    let dataType = "sample";
-    if (args[1] === "input") {
-        dataType = "input";
+    let dataType = "input";
+    if (args[1] === "sample") {
+        dataType = "sample";
     }
 
     return { dataType };
@@ -30,7 +30,7 @@ export async function argsChecker(args) {
 
 export async function partRunner({ part, input }) {
     console.time(part.name);
-    const result = part(input);
+    const result = await part({ input });
     console.timeEnd(part.name);
     console.log(result);
     return result;
