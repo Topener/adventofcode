@@ -23,7 +23,28 @@ export const part1 = ({ input }) => {
 };
 
 export const part2 = ({ input }) => {
-    const result = 0;
+    let result = 0;
+    input.forEach((row) => {
+        const { hands } = splitInput({ row });
+        let blue = 0;
+        let green = 0;
+        let red = 0;
+
+        hands.forEach((hand) => {
+            if (hand.hasOwnProperty("blue") && hand.blue > blue) {
+                blue = hand.blue;
+            }
+            if (hand.hasOwnProperty("green") && hand.green > green) {
+                green = hand.green;
+            }
+            if (hand.hasOwnProperty("red") && hand.red > red) {
+                red = hand.red;
+            }
+        });
+
+        const power = green * red * blue;
+        result += power;
+    });
     return result;
 };
 
