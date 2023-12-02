@@ -13,6 +13,10 @@ if (!(await fileExists(`./${dayFile}/index.js`))) {
 const { part1, part2 } = await import(`./${dayFile}/index.js`);
 const data = await loadData({ day: dayFile, dataType });
 
-partRunner({ part: part1, input: data });
+await partRunner({ part: part1, input: data });
 
-partRunner({ part: part2, input: data });
+if (dataType === "sample" && (await fileExists(`./${dayFile}/sample2.txt`))) {
+    await partRunner({ part: part2, input: await loadData({ day: dayFile, dataType: "sample2" }) });
+} else {
+    await partRunner({ part: part2, input: data });
+}
