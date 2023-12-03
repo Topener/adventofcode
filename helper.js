@@ -35,3 +35,7 @@ export async function partRunner({ part, input }) {
     console.log(result);
     return result;
 }
+
+export function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
