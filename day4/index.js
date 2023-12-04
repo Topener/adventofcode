@@ -30,9 +30,8 @@ export const part2 = ({ input }) => {
 };
 
 const getNumbers = ({ row }) => {
-    const split = row.split(": ");
-    const numbers = split[1].split(" | ");
-    const winning = numbers[0].split(" ").filter((n) => isNumeric(n));
-    const have = numbers[1].split(" ").filter((n) => isNumeric(n));
+    const matches = row.match(/: (.+?) \| (.+)/);
+    const winning = matches[1].match(/\d+/g);
+    const have = matches[2].match(/\d+/g);
     return { winning, have };
 };
