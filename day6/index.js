@@ -13,12 +13,17 @@ export const part1 = ({ input }) => {
 };
 
 export const part2 = ({ input }) => {
-    let result = 0;
-    const time = input[0].replace(/\D/g, "");
-    const record = input[1].replace(/\D/g, "");
+    const time = parseInt(input[0].replace(/\D/g, ""));
+    const record = parseInt(input[1].replace(/\D/g, ""));
 
-    const distances = calculateDistances(time);
-    result = distances.filter((distance) => distance.distance > record).length;
+    let result = 0;
+
+    for (let i = 0; i < time; i++) {
+        const distance = i * (time - i);
+        if (distance > record) {
+            result++;
+        }
+    }
 
     return result;
 };
