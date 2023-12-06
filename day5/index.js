@@ -1,8 +1,24 @@
 export const part1 = ({ input }) => {
-    let result = 0;
     const almanac = extractAlmanac({ input });
-    let current = "seed";
     let list = almanac.seeds;
+    let result = processSeeds({ list, almanac });
+    return result;
+};
+
+export const part2 = ({ input }) => {
+    const almanac = extractAlmanac({ input });
+    let listRanges = almanac.seeds;
+    let list = [];
+    for (let i = 0; i < listRanges.length; i += 2) {
+        list.push(...Array.from({ length: listRanges[i + 1] }, (_, i) => i + listRanges[i]));
+    }
+    let result = processSeeds({ list, almanac });
+    return result;
+};
+
+const processSeeds = ({ list, almanac }) => {
+    let result = 0;
+    let current = "seed";
     let newList = [];
     while (current !== "location") {
         const conversion = almanac.conversions.find((c) => c.from === current);
@@ -24,11 +40,6 @@ export const part1 = ({ input }) => {
         current = conversion.to;
     }
     result = Math.min(...list);
-    return result;
-};
-
-export const part2 = ({ input }) => {
-    let result = 0;
     return result;
 };
 
