@@ -12,6 +12,17 @@ export const part1 = ({ input }) => {
     return result;
 };
 
+export const part2 = ({ input }) => {
+    let result = 0;
+    const time = input[0].replace(/\D/g, "");
+    const record = input[1].replace(/\D/g, "");
+
+    const distances = calculateDistances(time);
+    result = distances.filter((distance) => distance.distance > record).length;
+
+    return result;
+};
+
 const calculateDistances = (maxTime) => {
     const distances = [];
     let speed = 0;
@@ -20,9 +31,4 @@ const calculateDistances = (maxTime) => {
         distances.push({ distance: speed * (maxTime - i), pushTime: i });
     }
     return distances;
-};
-
-export const part2 = ({ input }) => {
-    let result = 0;
-    return result;
 };
